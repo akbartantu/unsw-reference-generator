@@ -6,6 +6,7 @@ from backend.models.online_media import OnlineMediaArticle
 from backend.formatters.online_media_formatter import format_online_media
 from backend.formatters.intext_formatter import format_intext_journal
 from backend.formatters.intext_formatter import format_intext_media
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
@@ -13,6 +14,7 @@ app = FastAPI()
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )

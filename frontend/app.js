@@ -1,20 +1,27 @@
+// =========================
+// API BASE URL (Render URL)
+// =========================
+const API_BASE = "https://unsw-reference-generator.onrender.com";
+
+// =========================
 // TAB SWITCHING
+// =========================
 const tabButtons = document.querySelectorAll(".tab-btn");
 const tabContents = document.querySelectorAll(".tab-content");
 
 tabButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-        // Remove active from all
         tabButtons.forEach(b => b.classList.remove("active"));
         tabContents.forEach(c => c.classList.remove("active"));
 
-        // Add active to clicked tab
         btn.classList.add("active");
         document.getElementById(btn.dataset.tab).classList.add("active");
     });
 });
 
+// =========================
 // GENERATE JOURNAL
+// =========================
 document.getElementById("generateBtn").addEventListener("click", async () => {
 
     const payload = {
@@ -28,7 +35,7 @@ document.getElementById("generateBtn").addEventListener("click", async () => {
         doi: document.getElementById("doi").value
     };
 
-    const response = await fetch("http://127.0.0.1:8000/generate/journal", {
+    const response = await fetch(`${API_BASE}/generate/journal`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
@@ -40,8 +47,11 @@ document.getElementById("generateBtn").addEventListener("click", async () => {
     document.getElementById("intext").innerHTML = data.intext;
 });
 
+// =========================
 // GENERATE ONLINE MEDIA
+// =========================
 document.getElementById("generateOnline").addEventListener("click", async () => {
+
     const payload = {
         author: document.getElementById("o_author").value.trim() || null,
         year: document.getElementById("o_year").value,
@@ -54,7 +64,7 @@ document.getElementById("generateOnline").addEventListener("click", async () => 
         url: document.getElementById("o_url").value.trim() || null
     };
 
-    const response = await fetch("http://127.0.0.1:8000/generate/online-media", {
+    const response = await fetch(`${API_BASE}/generate/online-media`, {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(payload)
@@ -66,10 +76,13 @@ document.getElementById("generateOnline").addEventListener("click", async () => 
     document.getElementById("intext").innerHTML = data.intext;
 });
 
+// =========================
+// COPY BUTTON
+// =========================
 document.getElementById("copyBtn").addEventListener("click", () => {
     const html = document.getElementById("output").innerHTML;
 
-    // Remove ALL HTML tags
+    // Remove ALL HTML tags (e.g. <i>)
     const cleanText = html.replace(/<[^>]*>/g, "");
 
     navigator.clipboard.writeText(cleanText)
