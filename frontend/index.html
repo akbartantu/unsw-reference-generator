@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNSW Reference Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+
+        <h1>UNSW Reference Generator</h1>
+
+        <!-- TAB BUTTONS -->
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="journal">Journal Article</button>
+            <button class="tab-btn" data-tab="online">Online Media</button>
+        </div>
+
+        <!-- ===========================
+            JOURNAL TAB (Your Original Fields)
+        ================================ -->
+        <div class="tab-content active" id="journal">
+
+            <h2>Journal Article (Print)</h2>
+
+            <div class="form-group">
+                <label>Authors (separate multiple authors with comma)</label>
+                <input id="authors" placeholder="e.g. Alex Kozulin">
+            </div>
+
+            <div class="form-group">
+                <label>Year</label>
+                <input id="year" placeholder="1993">
+            </div>
+
+            <div class="form-group">
+                <label>Article Title</label>
+                <input id="article_title" placeholder="Literature as a Psychological Tool">
+            </div>
+
+            <div class="form-group">
+                <label>Journal Title</label>
+                <input id="journal_title" placeholder="Educational Psychologist">
+            </div>
+
+            <div class="form-group">
+                <label>Volume</label>
+                <input id="volume" placeholder="28">
+            </div>
+
+            <div class="form-group">
+                <label>Issue</label>
+                <input id="issue" placeholder="3">
+            </div>
+
+            <div class="form-group">
+                <label>Pages</label>
+                <input id="pages" placeholder="253-265">
+            </div>
+
+            <div class="form-group">
+                <label>DOI (optional)</label>
+                <input id="doi" placeholder="10.1207/s15326985ep2803_5">
+            </div>
+
+            <button id="generateBtn" class="btn">Generate Reference</button>
+        </div>
+
+        <!-- ===========================
+            ONLINE MEDIA TAB
+        ================================ -->
+        <div class="tab-content" id="online">
+
+            <h2>Online Media Article</h2>
+
+            <div class="form-group">
+                <label>Author (optional)</label>
+                <input id="o_author" placeholder="e.g. Phil Coorey">
+            </div>
+
+            <div class="form-group">
+                <label>Year</label>
+                <input id="o_year" placeholder="2007">
+            </div>
+
+            <div class="form-group">
+                <label>Article Title</label>
+                <input id="o_article_title" placeholder="Costello hints at green safety net">
+            </div>
+
+            <div class="form-group">
+                <label>Newspaper Title</label>
+                <input id="o_newspaper" placeholder="Sydney Morning Herald">
+            </div>
+
+            <div class="form-group">
+                <label>Publication Date</label>
+                <input id="o_pub_date" placeholder="10 May 2007">
+            </div>
+
+            <div class="form-group">
+                <label>Page Number (optional)</label>
+                <input id="o_page" placeholder="p. A03">
+            </div>
+
+            <div class="form-group">
+                <label>Accessed Date</label>
+                <input id="o_accessed" placeholder="14 May 2012">
+            </div>
+
+            <div class="form-group">
+                <label>Database Name (optional)</label>
+                <input id="o_database" placeholder="ProQuest Historical Newspapers">
+            </div>
+
+            <div class="form-group">
+                <label>URL (optional)</label>
+                <input id="o_url" placeholder="http://www.smh.com.au/...">
+            </div>
+
+            <button class="btn" id="generateOnline">Generate Reference</button>
+        </div>
+
+        <!-- ==============================
+                OUTPUT SECTION
+        ================================ -->
+        <h2>Generated Reference</h2>
+        <div id="output"></div>
+
+        <button class="btn" id="copyBtn">Copy Reference</button>
+
+        <h2>In-text Citation</h2>
+        <div id="intext"></div>
+
+    </div>
+
+    <script src="app.js?v=1.0"></script>
+</body>
+</html>
