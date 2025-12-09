@@ -14,6 +14,8 @@ from backend.formatters.intext_formatter import (
     format_intext_ai
 )
 
+from backend.services.fetch_journal import fetch_journal_by_doi
+
 app = FastAPI()
 
 # Allow all origins for now
@@ -73,3 +75,7 @@ def generate_ai(ref: AIReference):
     )
     intext = format_intext_ai(ref.company, ref.year)
     return {"reference": reference, "intext": intext}
+
+@app.get("/fetch/journal")
+def fetch_journal(doi: str):
+    return fetch_journal_by_doi(doi)

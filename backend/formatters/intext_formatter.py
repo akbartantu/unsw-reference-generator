@@ -7,26 +7,23 @@ def format_intext_journal(authors, year):
     - 4+ authors: (Surname1 et al. Year)
     """
 
-    # Convert input authors into clean list
-    clean_authors = [a.strip() for a in authors if a.strip()]
-    
-    surnames = [name.split()[-1] for name in clean_authors]
-    author_count = len(surnames)
+    # Extract surname (always the first part)
+    surnames = [a.split()[0].replace(",", "") for a in authors]
 
-    if author_count == 0:
-        return f"({year})"
+    count = len(surnames)
 
-    if author_count == 1:
+    if count == 1:
         return f"({surnames[0]} {year})"
 
-    if author_count == 2:
+    elif count == 2:
         return f"({surnames[0]} & {surnames[1]} {year})"
 
-    if author_count == 3:
+    elif count == 3:
         return f"({surnames[0]}, {surnames[1]} & {surnames[2]} {year})"
 
-    # 4+ authors
-    return f"({surnames[0]} et al. {year})"
+    else:
+        # 4 or more authors
+        return f"({surnames[0]} et al. {year})"
 
 def format_intext_media(author, newspaper_title, year):
     """

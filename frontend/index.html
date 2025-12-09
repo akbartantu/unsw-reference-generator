@@ -20,12 +20,21 @@
         </div>
 
         <!-- ===========================
-            JOURNAL TAB (Your Original Fields)
-        ================================ -->
+            JOURNAL TAB
+        =============================== -->
         <div class="tab-content active" id="journal">
 
             <h2>Journal Article (Print)</h2>
 
+            <!-- DOI SEARCH BLOCK -->
+            <h3>Search by DOI / URL</h3>
+            <div class="form-group doi-search">
+                <input id="doi_search" placeholder="Enter DOI or URL (e.g., 10.1207/s15326985ep2803_5)">
+                <button id="fetchJournal" class="btn">Search</button>
+            </div>
+            <hr>
+
+            <!-- MANUAL ENTRY FIELDS -->
             <div class="form-group">
                 <label>Authors (separate multiple authors with comma)</label>
                 <input id="authors" placeholder="e.g. Alex Kozulin">
@@ -71,7 +80,7 @@
 
         <!-- ===========================
             ONLINE MEDIA TAB
-        ================================ -->
+        =============================== -->
         <div class="tab-content" id="online">
 
             <h2>Online Media Article</h2>
@@ -125,8 +134,8 @@
         </div>
 
         <!-- ===========================
-                AI REFERENCE TAB
-        ================================ -->
+            AI REFERENCE TAB
+        =============================== -->
         <div class="tab-content" id="aiTab">
 
             <h2>AI Reference (Harvard Style)</h2>
@@ -164,9 +173,10 @@
             <button class="btn" id="generateAI">Generate Reference</button>
         </div>
 
-        <!-- ==============================
+        <!-- ===========================
                 OUTPUT SECTION
-        ================================ -->
+        =============================== -->
+        
         <h2>Generated Reference</h2>
         <div id="output"></div>
 
@@ -175,6 +185,14 @@
         <h2>In-text Citation</h2>
         <div id="intext"></div>
 
+    </div>
+
+    <!-- ===========================
+            SPINNER LOADING OVERLAY
+    =============================== -->
+    <div id="spinner" class="spinner hidden">
+        <div class="loader"></div>
+        <p>Processing…</p>
     </div>
 
     <script src="app.js?v=1.0"></script>
