@@ -1,0 +1,169 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&display=swap');
+
+@layer base {
+  :root {
+    /* UNSW-inspired academic color palette */
+    --background: 45 30% 98%;
+    --foreground: 220 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 25% 15%;
+
+    /* UNSW Gold accent */
+    --primary: 45 90% 48%;
+    --primary-foreground: 220 25% 10%;
+
+    --secondary: 220 15% 94%;
+    --secondary-foreground: 220 25% 20%;
+
+    --muted: 45 15% 92%;
+    --muted-foreground: 220 15% 45%;
+
+    --accent: 45 80% 55%;
+    --accent-foreground: 220 25% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 88%;
+    --input: 220 15% 88%;
+    --ring: 45 90% 48%;
+
+    --radius: 0.625rem;
+
+    /* Custom design tokens */
+    --font-display: 'Source Serif 4', Georgia, serif;
+    --font-body: 'Inter', system-ui, sans-serif;
+    
+    --shadow-soft: 0 2px 8px -2px hsl(220 25% 15% / 0.08), 0 4px 16px -4px hsl(220 25% 15% / 0.06);
+    --shadow-card: 0 1px 3px hsl(220 25% 15% / 0.04), 0 4px 12px -2px hsl(220 25% 15% / 0.08);
+    --shadow-elevated: 0 8px 30px -6px hsl(220 25% 15% / 0.12);
+    
+    --gradient-warm: linear-gradient(135deg, hsl(45 90% 48%) 0%, hsl(35 95% 55%) 100%);
+    --gradient-surface: linear-gradient(180deg, hsl(45 30% 98%) 0%, hsl(45 20% 95%) 100%);
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 220 20% 10%;
+    --foreground: 45 20% 95%;
+
+    --card: 220 18% 14%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 220 18% 14%;
+    --popover-foreground: 45 20% 95%;
+
+    --primary: 45 90% 55%;
+    --primary-foreground: 220 25% 10%;
+
+    --secondary: 220 15% 20%;
+    --secondary-foreground: 45 20% 90%;
+
+    --muted: 220 15% 18%;
+    --muted-foreground: 220 15% 60%;
+
+    --accent: 45 80% 50%;
+    --accent-foreground: 220 25% 10%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 15% 22%;
+    --input: 220 15% 22%;
+    --ring: 45 90% 55%;
+
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+  }
+}
+
+@layer components {
+  .reference-output {
+    font-family: var(--font-body);
+    line-height: 1.75;
+  }
+
+  .reference-output i {
+    font-style: italic;
+  }
+
+  .citation-preview {
+    @apply p-4 rounded-lg border border-border bg-card;
+    font-family: var(--font-body);
+  }
+
+  .form-section {
+    @apply space-y-4 p-6 rounded-xl border border-border bg-card;
+    box-shadow: var(--shadow-card);
+  }
+
+  .output-section {
+    @apply p-6 rounded-xl border-2 border-primary/20 bg-gradient-to-br from-primary/5 to-accent/5;
+  }
+
+  .copy-button {
+    @apply transition-all duration-200 ease-out;
+  }
+
+  .copy-button:active {
+    transform: scale(0.95);
+  }
+}
+
+@layer utilities {
+  .animate-fade-in {
+    animation: fadeIn 0.4s ease-out forwards;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
