@@ -500,6 +500,19 @@ app.get('/', (req, res) => {
   });
 });
 
+// API info route (for /api)
+app.get('/api', (req, res) => {
+  res.json({ 
+    service: 'UNSW Reference Generator API',
+    version: '1.0.0',
+    endpoints: {
+      health: 'GET /api/health',
+      fetchDOI: 'POST /api/fetch/doi',
+      fetchURL: 'POST /api/fetch/url'
+    }
+  });
+});
+
 // Health check
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', timestamp: new Date().toISOString() });
